@@ -6,8 +6,8 @@ public class OtherUtils {
 
   private static final Logger logger = Logger.getLogger(String.valueOf(OtherUtils.class));
 
-  public static String randomName() {
-    String name = "My board " + (int) (Math.random() * 10000);
+  public static String randomName(String obj) {
+    String name = "My " + obj + " " + (int) (Math.random() * 10000);
     logger.info(String.format("Random text: %s", name));
     return name;
   }

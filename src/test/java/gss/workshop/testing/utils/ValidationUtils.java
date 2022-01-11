@@ -3,6 +3,9 @@ package gss.workshop.testing.utils;
 import io.restassured.response.Response;
 import org.junit.Assert;
 
+import java.lang.reflect.Array;
+import java.util.List;
+
 public class ValidationUtils {
 
   /**
@@ -23,5 +26,23 @@ public class ValidationUtils {
    */
   public static void validateStringEqual(Object expectedStr, Object actualStr) {
     Assert.assertEquals(expectedStr, actualStr);
+  }
+
+  /**
+   * False value validation for boolean
+   *
+   * @param expectedStr expected value
+   */
+  public static void validateFalseValue(boolean expectedStr) {
+    Assert.assertFalse(expectedStr);
+  }
+
+  /**
+   * Empty list validation
+   *
+   * @param expectedList expected list
+   */
+  public static void validateEmptyList(List<Object> expectedList) {
+    Assert.assertTrue(expectedList.isEmpty());
   }
 }

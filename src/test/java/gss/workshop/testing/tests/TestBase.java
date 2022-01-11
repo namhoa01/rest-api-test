@@ -6,6 +6,14 @@ import gss.workshop.testing.utils.PropertyReader;
 
 public class TestBase {
 
+  public static final int STATUS_CODE_200 = 200;
+  public static final int STATUS_CODE_404 = 404;
+  public static final String ZERO = "0";
+  public static final String OBJ_BOARD = "board";
+  public static final String OBJ_CARD = "card";
+  public static final String LIST_TODO = "ToDo";
+  public static final String LIST_DONE = "Done";
+
   protected static PropertyReader prop;
   protected static String token;
   protected static String key;

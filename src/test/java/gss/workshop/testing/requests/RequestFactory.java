@@ -57,7 +57,11 @@ public class RequestFactory extends TestBase {
    * @return Response of the request
    */
   public static Response getBoardById(String boardId) {
-    return null;
+    logger.info("Getting a board.");
+    String requestPath = String.format(prop.getProperty("gettingBoardPath"), version, boardId);
+    Response res = RestClient.doGetRequestWithParams(requestPath, params);
+    logger.info("Finish for getting a board.");
+    return res;
   }
 
   /**
@@ -67,7 +71,11 @@ public class RequestFactory extends TestBase {
    * @return Response of the request
    */
   public static Response deleteBoard(String boardId) {
-    return null;
+    logger.info("Deleting a board.");
+    String requestPath = String.format(prop.getProperty("gettingBoardPath"), version, boardId);
+    Response res = RestClient.doDeleteRequestWithParams(requestPath, params);
+    logger.info("Finish for deleting a board.");
+    return res;
   }
 
   // -------------------List-------------------
@@ -80,7 +88,12 @@ public class RequestFactory extends TestBase {
    * @return Response of the request
    */
   public static Response createList(String boardId, String listName) {
-    return null;
+    logger.info("Creating new list on an existing board.");
+    params.putAll(addParams(Map.of("name", listName, "idBoard", boardId)));
+    String requestPath = String.format(prop.getProperty("listCreationPath"), version);
+    Response res = RestClient.doPostRequestWithParamsAndNoPayload(requestPath, params);
+    logger.info("Finish list creation.");
+    return res;
   }
 
   // -------------------Card-------------------
@@ -91,7 +104,12 @@ public class RequestFactory extends TestBase {
    * @return
    */
   public static Response createCard(String taskName, String listId) {
-    return null;
+    logger.info("Creating a card on an existing list of a board.");
+    params.putAll(addParams(Map.of("name", taskName, "idList", listId)));
+    String requestPath = String.format(prop.getProperty("cardCreationPath"), version);
+    Response res = RestClient.doPostRequestWithParamsAndNoPayload(requestPath, params);
+    logger.info("Finish card creation.");
+    return res;
   }
 
   /**
@@ -100,6 +118,11 @@ public class RequestFactory extends TestBase {
    * @return
    */
   public static Response updateCard(String cardId, String listId) {
-    return null;
+    logger.info("Updating a card on a list.");
+    params.putAll(addParams(Map.of("idList", listId)));
+    String requestPath = String.format(prop.getProperty("updatingCardPath"), version, cardId);
+    Response res = RestClient.doPutRequestWithParamsAndNoPayload(requestPath, params);
+    logger.info("Finish for updating card");
+    return res;
   }
 }
